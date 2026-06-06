@@ -10,36 +10,38 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 void setup() {
-
+  Serial.begin(9600);
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  Serial.print("Free RAM: ");
+Serial.println(freeRam());
   display.clearDisplay();
   display.display();
-
-
-  Serial.begin(9600);
+  
   pinMode(A0, INPUT);
   pinMode(A1, INPUT);
   pinMode(2, INPUT_PULLUP);
 
-  ball_x = random(0, 126);
-  ball_y = random(10, 62);
-  
+  food_x = random(0, 126);
+  food_y = random(10, 62);
+
+
+  Serial.println("Setup started");
 }
 
 void loop() {
-
+  Serial.println(F("loop start"));
   display.clearDisplay();
   display.setTextColor(WHITE);
 
 //Read values
   int joy_x, joy_y;
   read_joystick(joy_x, joy_y);
-
+   Serial.println(F("joystick read"));
 
 //Show Menu With Rectangle
   int joystick_z = digitalRead(2);
   menu_options(start_menu, menu_rect_y_pos, joystick_z);
-
+  Serial.println(F("menu options done"));
 
 // Menu Actions
   if(start_menu == 1){ //We are in Start Menu
@@ -55,10 +57,6 @@ void loop() {
     snake_x = snake_x + snake_speed_x;
     snake_y = snake_y + snake_speed_y;
 
-    store_tail_memory(tail_x, tail_y);
-    for(int k = 1; k < tail_length; k++){
-    display.drawRect(tail_x[k], tail_y[k], snake_width, snake_height, WHITE);
-    }
 
     //Update Speed According To Score
     if((score != 1 || score != 0) && (score/4 > 1)){ 
@@ -73,12 +71,12 @@ void loop() {
     update_snake_orientation(joy_x, joy_y, snake_width, snake_height, snake_speed,  snake_speed_x, snake_speed_y);
       
 
-  //Ball
-  display.drawRect(ball_x, ball_y, 4, 4, WHITE);
+  //Food
+  display.drawRect(food_x, food_y, 4, 4, WHITE);
   
-  if(ball_x >= snake_x && ball_x <= snake_x + snake_width && ball_y >= snake_y && ball_y <= snake_y + snake_height){
+  if(food_x >= snake_x && food_x <= snake_x + snake_width && food_y >= snake_y && food_y <= snake_y + snake_height){
       
-    snake_caught_ball(snake_speed_x, snake_speed_y, snake_length, ball_x, ball_y, score); //snake caught ball move it
+    snake_caught_ball(snake_speed_x, snake_speed_y, snake_length, food_x, food_y, score); //snake caught ball move it
   }
 
 
@@ -89,11 +87,22 @@ void loop() {
 
 
     display.display();
+
+
+
+
+
+
+
   }
-Serial.println("Setup started");
+
 }
 
-
+int freeRam() {
+  extern int __heap_start, *__brkval;
+  int v;
+  return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval);
+}
 
 
 
