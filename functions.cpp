@@ -74,6 +74,7 @@ void reset_game(){
    score = 0;
    snake_speed = 1;
    snake_length = 20;
+   tail_length = 1;
 }
 
 void snake_out_of_screen(int &snake_x, int &snake_y){
@@ -136,8 +137,8 @@ void make_snake_tail_longer(int snake_speed_x, int snake_speed_y, int &snake_len
 
 
 void store_tail_memory(int* tail_x, int* tail_y){
-
-  for(int k = tail_length; k > 0 ; k--){
+  if(tail_length >= 99) tail_length = 99;
+  for(int k = tail_length-1; k > 0 ; k--){
 
     tail_x[k] = tail_x[k-1]; 
     tail_y[k] = tail_y[k-1]; // each slot takes the value of the slot ahead
