@@ -14,15 +14,14 @@ extern int snake_speed_y;
 extern int snake_speed_x;
 extern int snake_speed;
 
-extern int ball_x;
-extern int ball_y;
+extern int food_x;
+extern int food_y;
 extern int score;
 
 extern int snake_length;
 
-extern int draw_count; 
 extern int tail_length;
-extern int tail_x[100];
-extern int tail_y[100];
+extern byte tail_x[30];
+extern byte tail_y[30];
 
 #endif

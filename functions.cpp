@@ -5,6 +5,7 @@
 #include <Adafruit_GFX.h>
 
 
+
 void read_joystick(int &joy_x, int &joy_y){
 
    joy_y = analogRead(A0);
@@ -135,16 +136,25 @@ void make_snake_tail_longer(int snake_speed_x, int snake_speed_y, int &snake_len
 }
 
 
-
-void store_tail_memory(int* tail_x, int* tail_y){
+//Eats away RAM
+/*void store_tail_memory(int* tail_x, int* tail_y){
+  Serial.println("store start");
+  
   if(tail_length >= 99) tail_length = 99;
+
+   Serial.print("tail_length: ");
+  Serial.println(tail_length);
+
   for(int k = tail_length-1; k > 0 ; k--){
 
     tail_x[k] = tail_x[k-1]; 
     tail_y[k] = tail_y[k-1]; // each slot takes the value of the slot ahead
 
   }
-
+  Serial.println("shift done");
   tail_x[0] = snake_x;
   tail_y[0] = snake_y;
+  Serial.println("head stored");
 }
+  */
+  

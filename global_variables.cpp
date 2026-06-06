@@ -16,12 +16,12 @@ int snake_speed_y = 0;
 int snake_speed_x = 1;
 int snake_speed = 1;
 
-int ball_x;
-int ball_y;
+int food_x;
+int food_y;
 int score = 0;
 
 int snake_length = 20;
 
 int tail_length = 1;
-int tail_x[100];
-int tail_y[100];
+byte tail_x[30] ;
+byte tail_y[30] ;
