@@ -1,6 +1,6 @@
 # SnakeOS
 
-A snake game built from scratch on an Arduino Nano with a 128x64 OLED display and joystick control. No game engine, no shortcuts, just embedded C++, 2KB of RAM, and a lot lot lot of debugging.
+A snake game built from scratch on an Arduino Nano with a 128x64 OLED display and joystick control. No game engine, no shortcuts,  embedded C++, 2KB of RAM, and a lot lot lot of debugging.
 
 ---
 
