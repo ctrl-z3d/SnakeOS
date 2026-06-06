@@ -92,7 +92,3 @@ These repositories were studied to understand the RAM constraint and how others 
 ## Author
 
 **ctrl+z** — EEE 3rd year, building toward embedded AI engineering.
-
-> "Fix error instantly" to "Control error over time using physics-based incremental correction"
->
-> -- from the MPU6050 build log that started this whole thing
