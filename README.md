@@ -29,7 +29,7 @@ A snake game built from scratch on an Arduino Nano with a 128x64 OLED display an
 ## File Structure
 
 ```
-SnakeOS/
+SnakeOS/src/
 ├── SnakeOS.ino          — main loop, setup, display init
 ├── functions.cpp        — all game logic functions
 ├── functions.h          — function declarations
